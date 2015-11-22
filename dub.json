@@ -1,5 +1,5 @@
 {
-	"name": "quill.d",
+	"name": "quill-d",
 	"description": "Simple, unobtrusive data access library for the D programming language.",
     "license": "The MIT License, see license file",
 	"copyright": "Copyright © 2015, Chris Barnes",
