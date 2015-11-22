@@ -1,0 +1,39 @@
+{
+	"name": "quill.d",
+	"description": "Simple, unobtrusive data access library for the D programming language.",
+    "license": "The MIT License, see license file",
+	"copyright": "Copyright © 2015, Chris Barnes",
+	"authors": ["Chris Barnes"],
+    "homepage": "https://github.com/chrishalebarnes/quill.d",
+	"dependencies": {
+        "ddbc": "~>0.2.24"
+	},
+    "targetType": "staticLibrary",
+    "stringImportPaths": ["queries"],
+    "configurations": [
+        {
+            "name": "full",
+            "subConfigurations": {
+                "ddbc": "full"
+            }
+        },
+        {
+            "name": "MySQL",
+            "subConfigurations": {
+                "ddbc": "MySQL"
+            }
+        },
+        {
+            "name": "PostgreSQL",
+            "subConfigurations": {
+                "ddbc": "PGSQL"
+            }
+        },
+        {
+            "name": "SQLite",
+            "subConfigurations": {
+                "ddbc": "SQLite"
+            }
+        }
+    ]
+}
