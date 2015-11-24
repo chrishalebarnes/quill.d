@@ -16,7 +16,6 @@ import std.regex;
 import std.string;
 import std.traits;
 import std.variant;
-import quill.database_type;
 import quill.mapper;
 import quill.variant_mapper;
 
@@ -33,50 +32,48 @@ class Database
         this.datasource = datasource;
     }
 
-    /**
-        Creates a new SQLite Database
-    */
-    this(string path)
+    version(USE_SQLITE)
     {
-        string[string] sqlLiteParams;
-        SQLITEDriver sqliteDriver = new SQLITEDriver();
-        DataSource sqlite3DataSource = new ConnectionPoolDataSourceImpl(sqliteDriver, path, sqlLiteParams);
-        this.datasource = new ConnectionPoolDataSourceImpl(sqliteDriver, path, sqlLiteParams);
-    }
-
-    /**
-        Creates a new SQLite Database
-    */
-    this(DatabaseType type, string path)
-    {
-        assert(type == DatabaseType.SQLite);
-        this(path);
-    }
-
-    /**
-        Creates a new PostgreSQL or MySQL Database.
-    */
-    this(DatabaseType type, string host, ushort port, string name, string username, string password, bool ssl = true)
-    {
-        if(type == DatabaseType.PostgreSQL)
+        /**
+            Creates a new SQLite Database
+        */
+        this(string path)
         {
-            string[string] psqlParams;
-            PGSQLDriver psqlDriver = new PGSQLDriver();
-            string psqlUrl = PGSQLDriver.generateUrl(host, port, name);
-            psqlParams["user"] = username;
-            psqlParams["password"] = password;
-            psqlParams["ssl"] = ssl ? "true" : "false";
-
-            this.datasource = new ConnectionPoolDataSourceImpl(psqlDriver, psqlUrl, psqlParams);
+            string[string] params;
+            SQLITEDriver sqliteDriver = new SQLITEDriver();
+            this.datasource = new ConnectionPoolDataSourceImpl(sqliteDriver, path, params);
         }
-        else if(type == DatabaseType.MySQL)
-        {
-            string[string] mysqlParams;
-            MySQLDriver mysqlDriver = new MySQLDriver();
-            string mysqlUrl = MySQLDriver.generateUrl(host, port, name);
-            mysqlParams = MySQLDriver.setUserAndPassword(username, password);
+    }
 
-            this.datasource = new ConnectionPoolDataSourceImpl(mysqlDriver, mysqlUrl, mysqlParams);
+    version(USE_PGSQL)
+    {
+        /**
+            Creates a new PostgreSQL Database.
+        */
+        this(string host, ushort port, string name, string username, string password, bool ssl)
+        {
+            string[string] params;
+            PGSQLDriver driver = new PGSQLDriver();
+            string url = PGSQLDriver.generateUrl(host, port, name);
+            params["user"] = username;
+            params["password"] = password;
+            params["ssl"] = ssl ? "true" : "false";
+            this.datasource = new ConnectionPoolDataSourceImpl(driver, url, params);
+        }
+    }
+
+    version(USE_MYSQL)
+    {
+        /**
+            Creates a new MySQL Database.
+        */
+        this(string host, ushort port, string name, string username, string password)
+        {
+            string[string] params;
+            MySQLDriver driver = new MySQLDriver();
+            string url = MySQLDriver.generateUrl(host, port, name);
+            params = MySQLDriver.setUserAndPassword(username, password);
+            this.datasource = new ConnectionPoolDataSourceImpl(driver, url, params);
         }
     }
 
@@ -685,7 +682,7 @@ version(unittest)
 
     Database createPostgresConnection()
     {
-        auto db = new Database(DatabaseType.PostgreSQL, "127.0.0.1", to!(ushort)(54320), "testdb", "admin", "password");
+        auto db = new Database("127.0.0.1", to!(ushort)(54320), "testdb", "admin", "password", true);
         string sql = "
             create table if not exists models(
                 id serial primary key,
@@ -699,7 +696,7 @@ version(unittest)
 
     Database createMysqlConnection()
     {
-        auto db = new Database(DatabaseType.MySQL, "127.0.0.1", to!(ushort)(33060), "testdb", "admin", "password");
+        auto db = new Database("127.0.0.1", to!(ushort)(33060), "testdb", "admin", "password");
 
         string sql = "
             create table if not exists models(

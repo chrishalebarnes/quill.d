@@ -13,24 +13,28 @@
     "configurations": [
         {
             "name": "full",
+            "versions": ["USE_MYSQL", "USE_SQLITE", "USE_PGSQL"],
             "subConfigurations": {
                 "ddbc": "full"
             }
         },
         {
             "name": "MySQL",
+            "versions": ["USE_MYSQL"],
             "subConfigurations": {
                 "ddbc": "MySQL"
             }
         },
         {
             "name": "PostgreSQL",
+            "versions": ["USE_PGSQL"],
             "subConfigurations": {
                 "ddbc": "PGSQL"
             }
         },
         {
             "name": "SQLite",
+            "versions": ["USE_SQLITE"],
             "subConfigurations": {
                 "ddbc": "SQLite"
             }
