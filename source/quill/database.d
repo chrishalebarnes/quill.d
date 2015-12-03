@@ -926,6 +926,27 @@ unittest
 
 version(unittest)
 {
+    class BindModel
+    {
+        int id;
+        @bind("name") string notName;
+    }
+}
+
+unittest
+{
+    auto dbs = all();
+    scope(exit) teardown(dbs);
+    foreach(db; dbs)
+    {
+        db.execute("insert into models(name) values('some name');");
+        BindModel model = db.single!(BindModel)("select * from models order by id desc limit 1;");
+        assert(model.notName == "some name");
+    }
+}
+
+version(unittest)
+{
     class FullModel
     {
         /* These are all of the supported types */

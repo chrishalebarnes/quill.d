@@ -52,7 +52,21 @@ class Mapper(T) : MapperBase
             {
                 foreach(int i, property;__traits(allMembers, T))
                 {
-                    int columnIndex = this.findColumn(property);
+                    int columnIndex;
+                    auto attributes = __traits(getAttributes, __traits(getMember, model, property));
+                    foreach(index, attribute; attributes)
+                    {
+                        static if(is(typeof(attribute) == quill.bind.bind))
+                        {
+                            string bindName = attribute.bind;
+                            columnIndex = this.findColumn(bindName);
+                            break;
+                        }
+                    }
+                    if(columnIndex == 0)
+                    {
+                        columnIndex = this.findColumn(property);
+                    }
                     if(columnIndex != 0) {
                         static if(T.tupleof.length > i)
                         {
