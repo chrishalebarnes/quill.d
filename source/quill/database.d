@@ -963,12 +963,13 @@ version(unittest)
         ushort ushort_column;
         byte byte_column;
         ubyte ubyte_column;
+        ubyte[] ubytes_column;
         string string_column;
         DateTime datetime_column;
 
         this() { }
 
-        this(float fc, double d, bool b, long l, ulong ul, int i, uint ui, short s, ushort us, byte bt, ubyte ub, string st, DateTime dt)
+        this(float fc, double d, bool b, long l, ulong ul, int i, uint ui, short s, ushort us, byte bt, ubyte ub, ubyte[] ubs, string st, DateTime dt)
         {
             this.float_column = fc;
             this.double_column = d;
@@ -981,6 +982,7 @@ version(unittest)
             this.ushort_column = us;
             this.byte_column = bt;
             this.ubyte_column = ub;
+            this.ubytes_column = ubs;
             this.string_column = st;
             this.datetime_column = dt;
         }
@@ -1005,6 +1007,7 @@ unittest
             ushort_column ushort,
             byte_column byte,
             ubyte_column ubyte,
+            ubytes_column blob,
             string_column string,
             datetime_column datetime
         );
@@ -1012,14 +1015,14 @@ unittest
 
     auto dateTime = DateTime(1999, 7, 6, 9);
     FullModel model = new FullModel(0.2f, 3.40483, true, 1_000_000L, 1_000_000UL, 2, to!(uint)(2),
-        to!(short)(2), to!(ushort)(2), to!(byte)(2), to!(ubyte)(2), "test string", dateTime
+        to!(short)(2), to!(ushort)(2), to!(byte)(2), to!(ubyte)(2), [1, 2, 3], "test string", dateTime
     );
 
     sqlite.execute!(FullModel)("insert into full_models values(
         null,
         ?(float_column),  ?(double_column), ?(bool_column),  ?(long_column),   ?(ulong_column),
         ?(int_column),    ?(uint_column),   ?(short_column), ?(ushort_column), ?(byte_column), ?(ubyte_column),
-        ?(string_column), ?(datetime_column));
+        ?(ubytes_column), ?(string_column), ?(datetime_column));
     ", model);
 
     FullModel insertedModel = sqlite.single!(FullModel)("select * from full_models order by id desc limit 1");
@@ -1034,6 +1037,7 @@ unittest
     assert(insertedModel.ushort_column == to!(ushort)(2));
     assert(insertedModel.byte_column == to!(byte)(2));
     assert(insertedModel.ubyte_column == to!(ubyte)(2));
+    assert(insertedModel.ubytes_column == [1,2,3]);
     assert(insertedModel.string_column == "test string");
     assert(insertedModel.datetime_column == DateTime(1999, 7, 6, 9));
 }
@@ -1059,7 +1063,7 @@ unittest
 
     auto dateTime = DateTime(1999, 7, 6, 9);
     FullModel model = new FullModel(0.2f, 3.40483, true, 1_000_000L, 1_000_000UL, 2, to!(uint)(2),
-        to!(short)(2), to!(ushort)(2), to!(byte)(2), to!(ubyte)(2), "test string", dateTime
+        to!(short)(2), to!(ushort)(2), to!(byte)(2), to!(ubyte)(2), [1,2,3], "test string", dateTime
     );
 
     postgres.execute!(FullModel)("insert into full_models values(
@@ -1097,6 +1101,7 @@ unittest
             ushort_column mediumint unsigned,
             byte_column tinyint,
             ubyte_column tinyint unsigned,
+            ubytes_column blob,
             string_column varchar(100),
             datetime_column datetime
         );
@@ -1104,13 +1109,13 @@ unittest
 
     auto dateTime = DateTime(1999, 7, 6, 9);
     FullModel model = new FullModel(0.2f, 3.40483, true, 1_000_000L, 1_000_000UL, 2, to!(uint)(2),
-        to!(short)(2), to!(ushort)(2), to!(byte)(2), to!(ubyte)(2), "test string", dateTime
+        to!(short)(2), to!(ushort)(2), to!(byte)(2), to!(ubyte)(2), [1,2,3], "test string", dateTime
     );
 
     mysql.execute!(FullModel)("insert into full_models values(
         null, ?(float_column),  ?(double_column), ?(bool_column),  ?(long_column),   ?(ulong_column),
               ?(int_column),    ?(uint_column),   ?(short_column), ?(ushort_column), ?(byte_column), ?(ubyte_column),
-              ?(string_column), ?(datetime_column));
+              ?(ubytes_column), ?(string_column), ?(datetime_column));
     ", model);
 
     FullModel insertedModel = mysql.single!(FullModel)("select * from full_models order by id desc limit 1");
@@ -1125,6 +1130,7 @@ unittest
     assert(insertedModel.ushort_column == to!(ushort)(2));
     assert(insertedModel.byte_column == to!(byte)(2));
     assert(insertedModel.ubyte_column == to!(ubyte)(2));
+    assert(insertedModel.ubytes_column == [1,2,3]);
     assert(insertedModel.string_column == "test string");
     assert(insertedModel.datetime_column == DateTime(1999, 7, 6, 9));
 }
