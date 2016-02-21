@@ -1,0 +1,68 @@
+html body {
+  font-size: 1em;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+#quilld {
+  display: none;
+}
+
+.icon {
+  &.github {
+    height: 100px;
+    width: auto;
+  }
+}
+
+.content {
+  #main-contents {
+    width: 70%;
+    font-size: 110%;
+  }
+  #main-nav {
+    min-width: 230px;
+    background: $symbol-search-background-color;
+    color: $symbol-item-color;
+    a {
+      color: $symbol-search-color;
+      font-size: 1.5em;
+    }
+
+    li {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      list-style: none;
+    }
+
+    h2 {
+      margin-left: 1em;
+    }
+  }
+
+  #symbolSearch {
+    color: $symbol-input-color;
+    font-size: 1.5em;
+    margin-top: 1em;
+    width: 100%;
+    padding: 5px 5px 5px 0px;
+    margin-left: -5px;
+  }
+
+  #symbolSearchPane ul li a {
+    margin-left: 10px;
+  }
+}
+
+/**
+ * Set `margin-bottom` to maintain vertical rhythm
+ */
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl, figure,
+%vertical-rhythm {
+    margin-bottom: $spacing-unit / 2;
+}

@@ -1,0 +1,50 @@
+header {
+  background: $top-bar-background-color;
+  padding: 1em 0.5em 1em 0.5em;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  color: $top-bar-color;
+  h1, span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  h1 {
+    a, a:hover {
+      color: $top-bar-color;
+    }
+    margin: 0;
+  }
+
+  span {
+    margin-left: 1em;
+  }
+
+  .versions {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    padding: 0 0.5em 0 0.5em;
+    margin-top: 11px;
+    select {
+      background-color: $version-list-background-color;
+      border-color: $version-list-border-color;
+      padding: 10px 10px 10px 10px;
+      font-size: 1.2em;
+      font-weight: 700;
+    }
+    option {
+      background: $version-list-item-background-color;
+      color: $version-list-item-color;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  header{
+    span {
+      display: none;
+    }
+  }
+}

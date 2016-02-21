@@ -1,0 +1,26 @@
+footer {
+  width: 100%;
+  background-color: $top-bar-background-color;
+  color: $top-bar-color;
+  padding: 1em 0 1em 0;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  h6, span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  h6 {
+    font-size: 32px;
+    margin: 0;
+    a, a:hover {
+      color: $top-bar-color;
+    }
+  }
+
+  span {
+    margin-left: 1em;
+  }
+
+}
