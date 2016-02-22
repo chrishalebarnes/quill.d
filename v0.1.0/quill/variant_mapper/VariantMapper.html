@@ -1,0 +1,109 @@
+---
+  layout: subdox
+---
+<nav id="main-nav">
+	<h2>Modules</h2>
+				<ul>
+				<li>
+					<a href="../../quill/bind.html">quill.bind</a>
+				</li>
+				<li>
+					<a href="../../quill/database.html">quill.database</a>
+				</li>
+				<li>
+					<a href="../../quill/database_type.html">quill.database_type</a>
+				</li>
+				<li>
+					<a href="../../quill/mapper.html">quill.mapper</a>
+				</li>
+				<li>
+					<a href="../../quill/mapper_base.html">quill.mapper_base</a>
+				</li>
+				<li>
+					<a href="../../quill/variant_mapper.html">quill.variant_mapper</a>
+				</li>
+				</ul>
+		<noscript>
+			<p style="color: red">The search functionality needs JavaScript enabled</p>
+		</noscript>
+		<div id="symbolSearchPane" style="display: none">
+			<p>
+				<input id="symbolSearch" type="text" placeholder="Search for symbols" onchange="performSymbolSearch(24);" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();"/>
+			</p>
+	<ul id="symbolSearchResults" style="display: none"></ul>
+	<script type="application/javascript" src="../../symbols.js"></script>
+	<script type="application/javascript">
+var symbolSearchRootDir = "../../";
+$('#symbolSearchPane').show();
+	</script>
+		</div>
+</nav>
+<div id="main-contents">
+	<h1>Class VariantMapper</h1>
+	<section>
+		<p>Maps Variant parameters to a PreparedStatement
+</p>
+<section></section>
+
+			<section>
+				<h3>Inherits from</h3>
+				<ul>
+					<li>
+						<code class="prettyprint lang-d"><a href="../../quill/mapper_base/MapperBase.html"><span class="typ">MapperBase</span></a></code>
+ (base class)
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Methods</h3>
+				<table>
+					<col class="caption"/>
+					<tr>
+						<th>Name</th>
+						<th>Description</th>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/variant_mapper/VariantMapper.map.html" class="public">
+								<code>map</code>
+							</a>
+						</td>
+						<td>Maps an array of Variants into a PreparedStatement
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/mapper_base/MapperBase.findColumn.html" class="protected inherited">
+								<code>findColumn</code>
+							</a>
+						</td>
+						<td>Finds the index of a column.
+</td>
+					</tr>
+				</table>
+			</section>
+<section><h3>See also</h3>
+<p><a href="../../quill/database.html"><code class="lang-d"><span class="pln">quill<wbr/></span><span class="pun">.</span><span class="pln">database</span></code></a>
+</p>
+</section>
+
+	</section>
+	<section>
+		<h2>Authors</h2>
+<p>Chris Barnes
+</p>
+
+	</section>
+	<section>
+		<h2>Copyright</h2>
+<p>© 2015 Chris Barnes
+</p>
+
+	</section>
+	<section>
+		<h2>License</h2>
+<p>The MIT License, see license file
+</p>
+
+	</section>
+</div>

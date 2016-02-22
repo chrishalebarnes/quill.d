@@ -2,8 +2,8 @@ title: Quill.d
 email: contact@barnesian.com
 description: >
   Simple, unobtrusive data access library for the D programming language.
-url: 'https://chrishalebarnes.github.io/quill.d/'
-#github_username:  chrishalebarnes
+url: 'https://chrishalebarnes.github.io/'
+baseurl: '/quill.d'
 markdown: kramdown
 kramdown:
   input: GFM

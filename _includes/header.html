@@ -1,11 +1,11 @@
 <header>
-  <h1><a href="/">{{ site.title }}</a></h1>
+  <h1><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
   <span>{{ site.description }}</span>
   <div class="versions">
     <select onChange="window.location.href=this.value">
-      <option value="/" selected>readme</option>
+      <option value="{{ site.baseurl }}/" selected>readme</option>
       {% for version in site.data.versions %}
-        <option value="/{{ version }}">{{ version }}</option>
+        <option value="{{ site.baseurl }}/{{ version }}">{{ version }}</option>
       {% endfor %}
     </select>
   </div>

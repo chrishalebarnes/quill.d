@@ -1,3 +1,4 @@
 $(document).ready(function() {
-  $('header select').val('/' + document.URL.split('/')[3]);
+  var values = document.URL.split('/');
+  $('header select').val('/' + values[3] + '/' + values[4]);
 });

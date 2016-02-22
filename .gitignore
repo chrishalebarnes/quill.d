@@ -9,4 +9,5 @@ __test*
 Thumbs.db
 .DS_Store
 dub.selections.json
-test.sqlite3
+.sass-cache
+_site
