@@ -1,5 +1,6 @@
 Quill.d
 ===================================================================
+**For more information visit the [API docs here](http://chrishalebarnes.github.io/quill.d/).**
 
 [Quill.d](https://github.com/chrishalebarnes/quill.d) is a data access library for [the D programming language](http://dlang.org/) that sits on top of [DDBC](https://github.com/buggins/ddbc). After getting set up you'll be able to write plain SQL in a file or a string, and run it. Quill.d embraces SQL as a language and does not attempt to abstract the database away. As it turns out, SQL is a pretty good language in which to query a database.
 
