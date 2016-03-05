@@ -1,4 +1,4 @@
 module quill;
 
-public import quill.bind;
+public import quill.attributes;
 public import quill.database;

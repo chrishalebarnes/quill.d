@@ -1,42 +1,56 @@
 {
-	"name": "quill-d",
-	"description": "Simple, unobtrusive data access library for the D programming language.",
-    "license": "The MIT License, see license file",
-	"copyright": "Copyright © 2015, Chris Barnes",
-	"authors": ["Chris Barnes"],
-    "homepage": "https://github.com/chrishalebarnes/quill.d",
-	"dependencies": {
-        "ddbc": "~>0.2.24"
-	},
-    "targetType": "staticLibrary",
-    "stringImportPaths": ["queries"],
-    "configurations": [
+    "name":"quill-d",
+    "description":"Simple, unobtrusive data access library for the D programming language.",
+    "license":"The MIT License, see license file",
+    "copyright":"Copyright © 2016, Chris Barnes",
+    "authors":[
+        "Chris Barnes"
+    ],
+    "homepage":"http://chrishalebarnes.github.io/quill.d/",
+    "dependencies":{
+        "ddbc":"~>0.2.24"
+    },
+    "targetType":"staticLibrary",
+    "stringImportPaths":[
+        "queries"
+    ],
+    "configurations":[
         {
-            "name": "full",
-            "versions": ["USE_MYSQL", "USE_SQLITE", "USE_PGSQL"],
-            "subConfigurations": {
-                "ddbc": "full"
+            "name":"full",
+            "versions":[
+                "USE_MYSQL",
+                "USE_SQLITE",
+                "USE_PGSQL"
+            ],
+            "subConfigurations":{
+                "ddbc":"full"
             }
         },
         {
-            "name": "MySQL",
-            "versions": ["USE_MYSQL"],
-            "subConfigurations": {
-                "ddbc": "MySQL"
+            "name":"MySQL",
+            "versions":[
+                "USE_MYSQL"
+            ],
+            "subConfigurations":{
+                "ddbc":"MySQL"
             }
         },
         {
-            "name": "PostgreSQL",
-            "versions": ["USE_PGSQL"],
-            "subConfigurations": {
-                "ddbc": "PGSQL"
+            "name":"PostgreSQL",
+            "versions":[
+                "USE_PGSQL"
+            ],
+            "subConfigurations":{
+                "ddbc":"PGSQL"
             }
         },
         {
-            "name": "SQLite",
-            "versions": ["USE_SQLITE"],
-            "subConfigurations": {
-                "ddbc": "SQLite"
+            "name":"SQLite",
+            "versions":[
+                "USE_SQLITE"
+            ],
+            "subConfigurations":{
+                "ddbc":"SQLite"
             }
         }
     ]

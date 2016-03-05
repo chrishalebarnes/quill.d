@@ -8,14 +8,22 @@
         class Model
         {
             int id;
-            @(bind("columnName")) string name;
+            @bind("columnName") string name;
+        }
+        ---
+
+        ---
+        class Model
+        {
+            int id;
+            @ignore string name;
         }
         ---
 
     See_also:
         quill.mapper
 */
-module quill.bind;
+module quill.attributes;
 
 /**
     Specifies a column name in a user defined attribute on a property.
@@ -24,3 +32,8 @@ struct bind
 {
     public string bind;
 }
+
+/**
+    The property to which this attribute is attached will not be mapped into the result
+*/
+enum omit = "omit";

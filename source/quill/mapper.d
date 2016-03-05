@@ -32,6 +32,20 @@ class Mapper(T) : MapperBase
         super(statement);
     }
 
+    string getBindName(T, string property)(T model)
+    {
+        auto attributes = __traits(getAttributes, __traits(getMember, model, property));
+
+        foreach(index, attribute; attributes)
+        {
+            static if(is(typeof(attribute) == quill.attributes.bind))
+            {
+                return attribute.bind;
+            }
+        }
+        return "";
+    }
+
     /**
         Maps each property of T to a column in a ResultSet.
         If T is a class, it will new it up and map all of the public fields.
@@ -53,24 +67,26 @@ class Mapper(T) : MapperBase
                 foreach(int i, property;__traits(allMembers, T))
                 {
                     int columnIndex;
-                    auto attributes = __traits(getAttributes, __traits(getMember, model, property));
-                    foreach(index, attribute; attributes)
+                    static if(isPublic!(T, property))
                     {
-                        static if(is(typeof(attribute) == quill.bind.bind))
+                        //Note: must check isPublic first since isIgnored accesses the property
+                        static if(!isIgnored!(T, property)())
                         {
-                            string bindName = attribute.bind;
-                            columnIndex = this.findColumn(bindName);
-                            break;
-                        }
-                    }
-                    if(columnIndex == 0)
-                    {
-                        columnIndex = this.findColumn(property);
-                    }
-                    if(columnIndex != 0) {
-                        static if(T.tupleof.length > i)
-                        {
-                            __traits(getMember, model, property) = this.mapType!(typeof(T.tupleof[i]))(columnIndex);
+                            string bindName = getBindName!(T, property)(model);
+                            if(bindName != "")
+                            {
+                                columnIndex = this.findColumn(bindName);
+                            }
+                            if(columnIndex == 0)
+                            {
+                                columnIndex = this.findColumn(property);
+                            }
+                            if(columnIndex != 0) {
+                                static if(T.tupleof.length > i)
+                                {
+                                    __traits(getMember, model, property) = this.mapType!(typeof(T.tupleof[i]))(columnIndex);
+                                }
+                            }
                         }
                     }
                 }
@@ -95,23 +111,26 @@ class Mapper(T) : MapperBase
         foreach(int i, property;__traits(allMembers, T))
         {
             int parameterIndex;
-            auto attributes = __traits(getAttributes, __traits(getMember, model, property));
-            parameterIndex = to!(int)(countUntil(map, property)) + 1;
-
-            foreach(index, attribute; attributes)
+            static if(isPublic!(T, property))
             {
-                static if(is(typeof(attribute) == quill.bind.bind))
+                //Note: must check isPublic first since isIgnored accesses the property
+                static if(!isIgnored!(T, property)())
                 {
-                    string bindName = attribute.bind;
-                    parameterIndex = to!(int)(countUntil(map, bindName)) + 1;
-                    break;
-                }
-            }
+                    auto attributes = __traits(getAttributes, __traits(getMember, model, property));
+                    parameterIndex = to!(int)(countUntil(map, property)) + 1;
 
-            if(parameterIndex > 0) {
-                static if(T.tupleof.length > i)
-                {
-                    this.mapType!(typeof(T.tupleof[i]))(parameterIndex, __traits(getMember, model, property));
+                    string bindName = getBindName!(T, property)(model);
+                    if(bindName != "")
+                    {
+                        parameterIndex = to!(int)(countUntil(map, bindName)) + 1;
+                    }
+
+                    if(parameterIndex > 0) {
+                        static if(T.tupleof.length > i)
+                        {
+                            this.mapType!(typeof(T.tupleof[i]))(parameterIndex, __traits(getMember, model, property));
+                        }
+                    }
                 }
             }
         }
@@ -292,4 +311,35 @@ bool isSupportedType(T)()
            is(T == uint)    || is(T == short)  || is(T == ushort)   || is(T == byte)   || is(T == ubyte) || is(T == byte[]) ||
            is(T == ubyte[]) || is(T == string) || is(T == DateTime);
 
+}
+
+/**
+    Checks if the property of T has the @omit attribute
+*/
+bool isIgnored(T, string property)()
+{
+    auto attributes = __traits(getAttributes, __traits(getMember, T, property));
+    foreach(index, attribute; attributes)
+    {
+        if(attribute.to!string == quill.attributes.omit)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+/**
+    Checks if the property of T is public
+*/
+bool isPublic(T, string property)()
+{
+    static if(__traits(getProtection, __traits(getMember, T, property)) == "public")
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }

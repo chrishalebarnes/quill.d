@@ -4,7 +4,6 @@
     Authors: Chris Barnes
 
     See_also:
-        quill.database_type;
         quill.mapper;
         quill.variant_mapper;
 */
@@ -657,7 +656,7 @@ class Database
 
 version(unittest)
 {
-    import quill.bind;
+    import quill.attributes;
     import std.datetime;
     import std.conv;
 
@@ -942,6 +941,28 @@ unittest
         db.execute("insert into models(name) values('some name');");
         BindModel model = db.single!(BindModel)("select * from models order by id desc limit 1;");
         assert(model.notName == "some name");
+    }
+}
+
+version(unittest)
+{
+    class OmitModel
+    {
+        protected int id;
+        @omit string name;
+    }
+}
+
+unittest
+{
+    auto dbs = all();
+    scope(exit) teardown(dbs);
+    foreach(db; dbs)
+    {
+        db.execute("insert into models(name) values('some name');");
+        OmitModel model = db.single!(OmitModel)("select * from models order by id desc limit 1;");
+        assert(model.name == "");
+        assert(model.id == 0);
     }
 }
 

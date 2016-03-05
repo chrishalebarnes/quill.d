@@ -49,7 +49,7 @@ Add [Quill.d](https://github.com/chrishalebarnes/quill.d) to `dub.json`
 {
     ...
     "dependencies": {
-        "quill-d": "~>0.1.3"
+        "quill-d": "~>0.1.4"
     }
 }
 ```
@@ -236,6 +236,19 @@ where `statement.sql` looks like this:
 
 ```
 select * from models where id = ?;
+```
+
+#### Ignoring Properties
+
+Properties that are not `public` or include the `@omit` attribute will be ignored. Given the following class, both `name` and `ignored` will be omitted.
+
+```
+class Model
+{
+    int id;
+    protected string name;
+    @omit string ignored;
+}
 ```
 
 #### More Examples
