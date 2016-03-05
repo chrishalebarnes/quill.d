@@ -1,0 +1,308 @@
+---
+  layout: subdox
+---
+<nav id="main-nav">
+	<h2>Modules</h2>
+				<ul>
+				<li>
+					<a href="../../quill/attributes.html">quill.attributes</a>
+				</li>
+				<li>
+					<a href="../../quill/database.html">quill.database</a>
+				</li>
+				<li>
+					<a href="../../quill/mapper.html">quill.mapper</a>
+				</li>
+				<li>
+					<a href="../../quill/mapper_base.html">quill.mapper_base</a>
+				</li>
+				<li>
+					<a href="../../quill/variant_mapper.html">quill.variant_mapper</a>
+				</li>
+				</ul>
+		<noscript>
+			<p style="color: red">The search functionality needs JavaScript enabled</p>
+		</noscript>
+		<div id="symbolSearchPane" style="display: none">
+			<p>
+				<input id="symbolSearch" type="text" placeholder="Search for symbols" onchange="performSymbolSearch(24);" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();"/>
+			</p>
+	<ul id="symbolSearchResults" style="display: none"></ul>
+	<script type="application/javascript" src="../../symbols.js"></script>
+	<script type="application/javascript">
+var symbolSearchRootDir = "../../";
+$('#symbolSearchPane').show();
+	</script>
+		</div>
+</nav>
+<div id="main-contents">
+	<h1>Database.execute - multiple declarations</h1>
+	<ul>
+		<li>Function Database.execute</li>
+		<li>Function Database.execute</li>
+		<li>Function Database.execute</li>
+		<li>Function Database.execute</li>
+		<li>Function Database.execute</li>
+		<li>Function Database.execute</li>
+		<li>Function Database.execute</li>
+		<li>Function Database.execute</li>
+	</ul>
+	<section>
+		<h2>Function Database.execute</h2>
+		<p>Execute a SQL statement from a file that takes many Variant <a href="../../quill/database/Database.execute.html#parameters"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.execute.html#parameters"><span class="pln">parameters</span></a></span></code></a>
+</p>
+
+			<section>
+				<h3>Prototype</h3>
+				<div class="prototype">
+					<code class="lang-d">
+<span class="typ">void</span> <span class="pln">execute</span><span class="pun">(</span><span class="typ">string </span><span class="pln">path</span><span class="pun">)</span><span class="pun">(</span>
+						<br/>
+&nbsp;&nbsp;<span class="typ">Variant</span><span class="pun">[]</span> <span class="pln">parameters</span>
+						<br/>
+<span class="pun">)</span><span class="pun">;</span>
+					</code>
+				</div>
+			</section>
+<section><h3>Parameters</h3>
+<table><col class="caption"><tr><th>Name</th><th>Description</th></tr>
+<tr><td id="path">path</td><td> path to SQL file</td></tr>
+<tr><td id="parameters">parameters</td><td> many ordered Variant <a href="../../quill/database/Database.execute.html#parameters"><code class="lang-d"><span class="pln">parameters</span></code></a></td></tr>
+</table>
+</section>
+<section><h3>Examples</h3>
+<pre class="code"><code class="lang-d"><span class="pln">database<wbr/></span><span class="pun">.</span><span class="pln">execute</span><span class="pun">!(</span><span class="str">"queries/statement.sql"</span><span class="pun">)(</span><span class="pln">variantArray</span><span class="pun">(</span><span class="str">"value one"</span><span class="pun">, </span><span class="str">"value two"</span><span class="pun">));</span></code></pre>
+</section>
+
+	</section>
+	<section>
+		<h2>Function Database.execute</h2>
+		<p>Execute a SQL statement from a file that takes a <a href="../../quill/database/Database.execute.html#model"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.execute.html#model"><span class="pln">model</span></a></span></code></a> parameter
+</p>
+
+			<section>
+				<h3>Prototype</h3>
+				<div class="prototype">
+					<code class="lang-d">
+<span class="typ">void</span> <span class="pln">execute</span><span class="pun">(</span><span class="pln">T</span><span class="pun">, </span><span class="typ">string </span><span class="pln">path</span><span class="pun">)</span><span class="pun">(</span>
+						<br/>
+&nbsp;&nbsp;<span class="pln">T</span> <span class="pln">model</span>
+						<br/>
+<span class="pun">)</span><span class="pun">;</span>
+					</code>
+				</div>
+			</section>
+<section><h3>Parameters</h3>
+<table><col class="caption"><tr><th>Name</th><th>Description</th></tr>
+<tr><td id="T">T</td><td> type to map parameters to</td></tr>
+<tr><td id="path">path</td><td> path to SQL file</td></tr>
+<tr><td id="model">model</td><td> <a href="../../quill/database/Database.execute.html#model"><code class="lang-d"><span class="pln">model</span></code></a> to map parameters to</td></tr>
+</table>
+</section>
+<section><h3>Examples</h3>
+<pre class="code"><code class="lang-d"><span class="kwd">class </span><span class="typ">Model
+</span><span class="pun">{
+    </span><span class="typ">int </span><span class="pln">id</span><span class="pun">;
+    @(</span><span class="pln">bind</span><span class="pun">(</span><span class="str">"name"</span><span class="pun">)) </span><span class="typ">string </span><span class="pln">name</span><span class="pun">;
+}
+</span><span class="kwd">auto <a href="../../quill/database/Database.execute.html#model"></span><span class="pln">model</a> </span><span class="pun">= </span><span class="kwd">new </span><span class="typ">Model</span><span class="pun">();
+</span><span class="pln">model<wbr/></span><span class="pun">.</span><span class="pln">name </span><span class="pun">= </span><span class="str">"value"</span><span class="pun">;
+</span><span class="pln">database<wbr/></span><span class="pun">.</span><span class="pln">execute</span><span class="pun">!(</span><span class="typ">Model</span><span class="pun">, </span><span class="str">"queries/statement.sql"</span><span class="pun">, <a href="../../quill/database/Database.execute.html#model"></span><span class="pln">model</a></span><span class="pun">);</span></code></pre>
+</section>
+
+	</section>
+	<section>
+		<h2>Function Database.execute</h2>
+		<p>Execute a SQL statement that takes a <a href="../../quill/database/Database.execute.html#model"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.execute.html#model"><span class="pln">model</span></a></span></code></a> parameter
+</p>
+
+			<section>
+				<h3>Prototype</h3>
+				<div class="prototype">
+					<code class="lang-d">
+<span class="typ">void</span> <span class="pln">execute</span><span class="pun">(</span><span class="pln">T</span><span class="pun">)</span><span class="pun">(</span>
+						<br/>
+&nbsp;&nbsp;<span class="typ">string</span> <span class="pln">sql</span><span class="pun">,</span>
+						<br/>
+&nbsp;&nbsp;<span class="pln">T</span> <span class="pln">model</span>
+						<br/>
+<span class="pun">)</span><span class="pun">;</span>
+					</code>
+				</div>
+			</section>
+<section><h3>Parameters</h3>
+<table><col class="caption"><tr><th>Name</th><th>Description</th></tr>
+<tr><td id="T">T</td><td> type to map parameters to</td></tr>
+<tr><td id="sql">sql</td><td> SQL statement to <a href="../../quill/database/Database.execute.html"><code class="lang-d"><span class="pln">execute</span></code></a></td></tr>
+<tr><td id="model">model</td><td> <a href="../../quill/database/Database.execute.html#model"><code class="lang-d"><span class="pln">model</span></code></a> to map parameters to</td></tr>
+</table>
+</section>
+<section><h3>Examples</h3>
+<pre class="code"><code class="lang-d"><span class="kwd">class </span><span class="typ">Model
+</span><span class="pun">{
+    </span><span class="typ">int </span><span class="pln">id</span><span class="pun">;
+    @(</span><span class="pln">bind</span><span class="pun">(</span><span class="str">"name"</span><span class="pun">)) </span><span class="typ">string </span><span class="pln">name</span><span class="pun">;
+}
+</span><span class="kwd">auto <a href="../../quill/database/Database.execute.html#model"></span><span class="pln">model</a> </span><span class="pun">= </span><span class="kwd">new </span><span class="typ">Model</span><span class="pun">();
+</span><span class="pln">model<wbr/></span><span class="pun">.</span><span class="pln">name </span><span class="pun">= </span><span class="str">"value"</span><span class="pun">;
+</span><span class="pln">database<wbr/></span><span class="pun">.</span><span class="pln">execute</span><span class="pun">!(</span><span class="typ">Model</span><span class="pun">)(</span><span class="str">"insert into models(name) values(?(name));"</span><span class="pun">, <a href="../../quill/database/Database.execute.html#model"></span><span class="pln">model</a></span><span class="pun">);</span></code></pre>
+</section>
+
+	</section>
+	<section>
+		<h2>Function Database.execute</h2>
+		<p>Execute a SQL statment with no parameters and no return
+</p>
+
+			<section>
+				<h3>Prototype</h3>
+				<div class="prototype">
+					<code class="lang-d">
+<span class="typ">void</span> <span class="pln">execute</span><span class="pun">(</span>
+						<br/>
+&nbsp;&nbsp;<span class="typ">string</span> <span class="pln">sql</span>
+						<br/>
+<span class="pun">)</span><span class="pun">;</span>
+					</code>
+				</div>
+			</section>
+<section><h3>Parameters</h3>
+<table><col class="caption"><tr><th>Name</th><th>Description</th></tr>
+<tr><td id="sql">sql</td><td> SQL statement to <a href="../../quill/database/Database.execute.html"><code class="lang-d"><span class="pln">execute</span></code></a></td></tr>
+</table>
+</section>
+<section><h3>Examples</h3>
+<pre class="code"><code class="lang-d"><span class="pln">database<wbr/></span><span class="pun">.</span><span class="pln">execute</span><span class="pun">(</span><span class="str">"insert into models values('value');"</span><span class="pun">)</span></code></pre>
+</section>
+
+	</section>
+	<section>
+		<h2>Function Database.execute</h2>
+		<p>Execute a SQL statment from a file with no parameters and no return
+</p>
+
+			<section>
+				<h3>Prototype</h3>
+				<div class="prototype">
+					<code class="lang-d">
+<span class="typ">void</span> <span class="pln">execute<span class="pun">(</span><span class="typ">string </span><span class="pln">path</span><span class="pun">)</span><span class="pun">()</span><span class="pun">;</span>
+					</code>
+				</div>
+			</section>
+<section><h3>Parameters</h3>
+<table><col class="caption"><tr><th>Name</th><th>Description</th></tr>
+<tr><td id="path">path</td><td> path to SQL file</td></tr>
+</table>
+</section>
+<section><h3>Examples</h3>
+<pre class="code"><code class="lang-d"><span class="pln">database<wbr/></span><span class="pun">.</span><span class="pln">execute</span><span class="pun">!(</span><span class="str">"queries/statement.sql"</span><span class="pun">)();</span></code></pre>
+</section>
+
+	</section>
+	<section>
+		<h2>Function Database.execute</h2>
+		<p>Execute a SQL statement that takes many Variant <a href="../../quill/database/Database.execute.html#parameters"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.execute.html#parameters"><span class="pln">parameters</span></a></span></code></a>
+</p>
+
+			<section>
+				<h3>Prototype</h3>
+				<div class="prototype">
+					<code class="lang-d">
+<span class="typ">void</span> <span class="pln">execute</span><span class="pun">(</span>
+						<br/>
+&nbsp;&nbsp;<span class="typ">string</span> <span class="pln">sql</span><span class="pun">,</span>
+						<br/>
+&nbsp;&nbsp;<span class="pln">std<wbr/></span><span class="pun">.</span><span class="pln">variant<wbr/></span><span class="pun">.</span><span class="typ">VariantN</span>!(32L)<span class="pun">[]</span> <span class="pln">parameters</span>
+						<br/>
+<span class="pun">)</span><span class="pun">;</span>
+					</code>
+				</div>
+			</section>
+<section><h3>Parameters</h3>
+<table><col class="caption"><tr><th>Name</th><th>Description</th></tr>
+<tr><td id="sql">sql</td><td> SQL statement to <a href="../../quill/database/Database.execute.html"><code class="lang-d"><span class="pln">execute</span></code></a></td></tr>
+<tr><td id="parameters">parameters</td><td> many ordered Variant <a href="../../quill/database/Database.execute.html#parameters"><code class="lang-d"><span class="pln">parameters</span></code></a></td></tr>
+</table>
+</section>
+<section><h3>Examples</h3>
+<pre class="code"><code class="lang-d"><span class="pln">database<wbr/></span><span class="pun">.</span><span class="pln">execute</span><span class="pun">(</span><span class="str">"insert into models(name, description) values(?, ?)"</span><span class="pun">, </span><span class="pln">variantArray</span><span class="pun">(</span><span class="str">"value one"</span><span class="pun">, </span><span class="str">"value two"</span><span class="pun">));</span></code></pre>
+</section>
+
+	</section>
+	<section>
+		<h2>Function Database.execute</h2>
+		<p>Execute a SQL statment that takes a <a href="../../quill/database/Database.single.html"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.single.html"><span class="pln">single</span></a></span></code></a> Variant <a href="../../quill/database/Database.execute.html#parameter"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.execute.html#parameter"><span class="pln">parameter</span></a></span></code></a>
+</p>
+
+			<section>
+				<h3>Prototype</h3>
+				<div class="prototype">
+					<code class="lang-d">
+<span class="typ">void</span> <span class="pln">execute</span><span class="pun">(</span>
+						<br/>
+&nbsp;&nbsp;<span class="typ">string</span> <span class="pln">sql</span><span class="pun">,</span>
+						<br/>
+&nbsp;&nbsp;<span class="pln">std<wbr/></span><span class="pun">.</span><span class="pln">variant<wbr/></span><span class="pun">.</span><span class="typ">VariantN</span>!(32L) <span class="pln">parameter</span>
+						<br/>
+<span class="pun">)</span><span class="pun">;</span>
+					</code>
+				</div>
+			</section>
+<section><h3>Parameters</h3>
+<table><col class="caption"><tr><th>Name</th><th>Description</th></tr>
+<tr><td id="sql">sql</td><td> SQL statement to <a href="../../quill/database/Database.execute.html"><code class="lang-d"><span class="pln">execute</span></code></a></td></tr>
+<tr><td id="parameter">parameter</td><td> a <a href="../../quill/database/Database.single.html"><code class="lang-d"><span class="pln">single</span></code></a> Variant <a href="../../quill/database/Database.execute.html#parameter"><code class="lang-d"><span class="pln">parameter</span></code></a></td></tr>
+</table>
+</section>
+<section><h3>Examples</h3>
+<pre class="code"><code class="lang-d"><span class="pln">database<wbr/></span><span class="pun">.</span><span class="pln">execute</span><span class="pun">(</span><span class="str">"insert into models(name) values(?);"</span><span class="pun">, </span><span class="typ">Variant</span><span class="pun">(</span><span class="str">"name"</span><span class="pun">));</span></code></pre>
+</section>
+
+	</section>
+	<section>
+		<h2>Function Database.execute</h2>
+		<p>Execute a SQL statement from a file that takes a <a href="../../quill/database/Database.single.html"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.single.html"><span class="pln">single</span></a></span></code></a> Variant <a href="../../quill/database/Database.execute.html#parameter"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.execute.html#parameter"><span class="pln">parameter</span></a></span></code></a>
+</p>
+
+			<section>
+				<h3>Prototype</h3>
+				<div class="prototype">
+					<code class="lang-d">
+<span class="typ">void</span> <span class="pln">execute</span><span class="pun">(</span><span class="typ">string </span><span class="pln">path</span><span class="pun">)</span><span class="pun">(</span>
+						<br/>
+&nbsp;&nbsp;<span class="typ">Variant</span> <span class="pln">parameter</span>
+						<br/>
+<span class="pun">)</span><span class="pun">;</span>
+					</code>
+				</div>
+			</section>
+<section><h3>Parameters</h3>
+<table><col class="caption"><tr><th>Name</th><th>Description</th></tr>
+<tr><td id="path">path</td><td> path to SQL file</td></tr>
+<tr><td id="parameter">parameter</td><td> a <a href="../../quill/database/Database.single.html"><code class="lang-d"><span class="pln">single</span></code></a> Variant <a href="../../quill/database/Database.execute.html#parameter"><code class="lang-d"><span class="pln">parameter</span></code></a></td></tr>
+</table>
+</section>
+<section><h3>Examples</h3>
+<pre class="code"><code class="lang-d"><span class="pln">database<wbr/></span><span class="pun">.</span><span class="pln">execute</span><span class="pun">!(</span><span class="str">"queries/statement.sql"</span><span class="pun">)(</span><span class="typ">Variant</span><span class="pun">(</span><span class="str">"value"</span><span class="pun">));</span></code></pre>
+</section>
+
+	</section>
+	<section>
+		<h2>Authors</h2>
+<p>Chris Barnes
+</p>
+
+	</section>
+	<section>
+		<h2>Copyright</h2>
+<p>© 2015 Chris Barnes
+</p>
+
+	</section>
+	<section>
+		<h2>License</h2>
+<p>The MIT License, see license file
+</p>
+
+	</section>
+</div>

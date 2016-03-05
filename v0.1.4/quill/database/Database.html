@@ -1,0 +1,354 @@
+---
+  layout: subdox
+---
+<nav id="main-nav">
+	<h2>Modules</h2>
+				<ul>
+				<li>
+					<a href="../../quill/attributes.html">quill.attributes</a>
+				</li>
+				<li>
+					<a href="../../quill/database.html">quill.database</a>
+				</li>
+				<li>
+					<a href="../../quill/mapper.html">quill.mapper</a>
+				</li>
+				<li>
+					<a href="../../quill/mapper_base.html">quill.mapper_base</a>
+				</li>
+				<li>
+					<a href="../../quill/variant_mapper.html">quill.variant_mapper</a>
+				</li>
+				</ul>
+		<noscript>
+			<p style="color: red">The search functionality needs JavaScript enabled</p>
+		</noscript>
+		<div id="symbolSearchPane" style="display: none">
+			<p>
+				<input id="symbolSearch" type="text" placeholder="Search for symbols" onchange="performSymbolSearch(24);" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();"/>
+			</p>
+	<ul id="symbolSearchResults" style="display: none"></ul>
+	<script type="application/javascript" src="../../symbols.js"></script>
+	<script type="application/javascript">
+var symbolSearchRootDir = "../../";
+$('#symbolSearchPane').show();
+	</script>
+		</div>
+</nav>
+<div id="main-contents">
+	<h1>Class Database</h1>
+	<section>
+		<p>Represents a database that can <a href="../quill/database/Database.execute.html"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.execute.html"><span class="pln">execute</span></a></span></code></a> various kinds of SQL Queries
+</p>
+
+			<section>
+				<h3>Inherits from</h3>
+				<ul>
+					<li>
+						<code class="prettyprint lang-d"><span class="typ">Object</span></code>
+ (base class)
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Constructors</h3>
+				<table>
+					<col class="caption"/>
+					<tr>
+						<th>Name</th>
+						<th>Description</th>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.this.html" class="public">
+								<code>this</code>
+							</a>
+						</td>
+						<td>Creates a new <a href="../../quill/database/Database.html"><code class="lang-d"><span class="typ"><a href="../../quill/database/Database.html"><span class="typ">Database</span></a></span></code></a> given an existing DataSource
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.this.html" class="public">
+								<code>this</code>
+							</a>
+						</td>
+						<td>Creates a new MySQL <a href="../../quill/database/Database.html"><code class="lang-d"><span class="typ"><a href="../../quill/database/Database.html"><span class="typ">Database</span></a></span></code></a>.
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.this.html" class="public">
+								<code>this</code>
+							</a>
+						</td>
+						<td>Creates a new PostgreSQL <a href="../../quill/database/Database.html"><code class="lang-d"><span class="typ"><a href="../../quill/database/Database.html"><span class="typ">Database</span></a></span></code></a>.
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.this.html" class="public">
+								<code>this</code>
+							</a>
+						</td>
+						<td>Creates a new SQLite <a href="../../quill/database/Database.html"><code class="lang-d"><span class="typ"><a href="../../quill/database/Database.html"><span class="typ">Database</span></a></span></code></a>
+</td>
+					</tr>
+				</table>
+			</section>
+			<section>
+				<h3>Methods</h3>
+				<table>
+					<col class="caption"/>
+					<tr>
+						<th>Name</th>
+						<th>Description</th>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.execute.html" class="public">
+								<code>execute</code>
+							</a>
+						</td>
+						<td>Execute a SQL statement from a file that takes many Variant <a href="../../quill/database/Database.execute.html#parameters"><code class="lang-d"><span class="pln">parameters</span></code></a>
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.execute.html" class="public">
+								<code>execute</code>
+							</a>
+						</td>
+						<td>Execute a SQL statement from a file that takes a <a href="../../quill/database/Database.execute.html#model"><code class="lang-d"><span class="pln">model</span></code></a> parameter
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.execute.html" class="public">
+								<code>execute</code>
+							</a>
+						</td>
+						<td>Execute a SQL statement that takes a <a href="../../quill/database/Database.execute.html#model"><code class="lang-d"><span class="pln">model</span></code></a> parameter
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.execute.html" class="public">
+								<code>execute</code>
+							</a>
+						</td>
+						<td>Execute a SQL statment with no parameters and no return
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.execute.html" class="public">
+								<code>execute</code>
+							</a>
+						</td>
+						<td>Execute a SQL statment from a file with no parameters and no return
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.execute.html" class="public">
+								<code>execute</code>
+							</a>
+						</td>
+						<td>Execute a SQL statement that takes many Variant <a href="../../quill/database/Database.execute.html#parameters"><code class="lang-d"><span class="pln">parameters</span></code></a>
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.execute.html" class="public">
+								<code>execute</code>
+							</a>
+						</td>
+						<td>Execute a SQL statment that takes a <a href="../../quill/database/Database.single.html"><code class="lang-d"><span class="pln">single</span></code></a> Variant <a href="../../quill/database/Database.execute.html#parameter"><code class="lang-d"><span class="pln">parameter</span></code></a>
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.execute.html" class="public">
+								<code>execute</code>
+							</a>
+						</td>
+						<td>Execute a SQL statement from a file that takes a <a href="../../quill/database/Database.single.html"><code class="lang-d"><span class="pln">single</span></code></a> Variant <a href="../../quill/database/Database.execute.html#parameter"><code class="lang-d"><span class="pln">parameter</span></code></a>
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.list.html" class="public">
+								<code>list</code>
+							</a>
+						</td>
+						<td>Execute a SQL statement that takes a <a href="../../quill/database/Database.list.html#model"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.list.html#model"><span class="pln">model</span></a></span></code></a> parameter and returns many rows
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.list.html" class="public">
+								<code>list</code>
+							</a>
+						</td>
+						<td>Execute a SQL statement from a file that takes many Variant <a href="../../quill/database/Database.list.html#parameters"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.list.html#parameters"><span class="pln">parameters</span></a></span></code></a> and returns many rows
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.list.html" class="public">
+								<code>list</code>
+							</a>
+						</td>
+						<td>Execute a SQL statement that takes many Variant <a href="../../quill/database/Database.list.html#parameters"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.list.html#parameters"><span class="pln">parameters</span></a></span></code></a> and returns many rows
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.list.html" class="public">
+								<code>list</code>
+							</a>
+						</td>
+						<td>Execute a SQL statement from a file that takes a <a href="../../quill/database/Database.single.html"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.single.html"><span class="pln">single</span></a></span></code></a> Variant <a href="../../quill/database/Database.list.html#parameter"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.list.html#parameter"><span class="pln">parameter</span></a></span></code></a> and returns many rows
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.list.html" class="public">
+								<code>list</code>
+							</a>
+						</td>
+						<td>Execute a SQL statement that takes a <a href="../../quill/database/Database.single.html"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.single.html"><span class="pln">single</span></a></span></code></a> Variant <a href="../../quill/database/Database.list.html#parameter"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.list.html#parameter"><span class="pln">parameter</span></a></span></code></a> and returns many rows
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.list.html" class="public">
+								<code>list</code>
+							</a>
+						</td>
+						<td>Execute a SQL statement from a file that takes a <a href="../../quill/database/Database.list.html#model"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.list.html#model"><span class="pln">model</span></a></span></code></a> parameter and returns many rows
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.list.html" class="public">
+								<code>list</code>
+							</a>
+						</td>
+						<td>Execute a SQL statment that returns multiple rows
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.list.html" class="public">
+								<code>list</code>
+							</a>
+						</td>
+						<td>Execute a SQL statement from a file that returns multiple rows
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.single.html" class="public">
+								<code>single</code>
+							</a>
+						</td>
+						<td>Execute a SQL statement that takes a Variant <a href="../../quill/database/Database.single.html#parameter"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.single.html#parameter"><span class="pln">parameter</span></a></span></code></a> and returns a <code class="lang-d"><span class="pln"><span class="pln">single</span></span></code> row
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.single.html" class="public">
+								<code>single</code>
+							</a>
+						</td>
+						<td>Execute a SQL statement from a file that takes a Variant <a href="../../quill/database/Database.single.html#parameter"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.single.html#parameter"><span class="pln">parameter</span></a></span></code></a> and returns a <a href="../../quill/database/Database.single.html"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.single.html"><span class="pln">single</span></a></span></code></a> row
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.single.html" class="public">
+								<code>single</code>
+							</a>
+						</td>
+						<td>Execute a SQL statement that takes many Variant <a href="../../quill/database/Database.single.html#parameters"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.single.html#parameters"><span class="pln">parameters</span></a></span></code></a> and returns a <a href="../../quill/database/Database.single.html"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.single.html"><span class="pln">single</span></a></span></code></a> row
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.single.html" class="public">
+								<code>single</code>
+							</a>
+						</td>
+						<td>Execute a SQL statement from a file that takes many Variant <a href="../../quill/database/Database.single.html#parameters"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.single.html#parameters"><span class="pln">parameters</span></a></span></code></a> and returns a <a href="../../quill/database/Database.single.html"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.single.html"><span class="pln">single</span></a></span></code></a> row
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.single.html" class="public">
+								<code>single</code>
+							</a>
+						</td>
+						<td>Execute a SQL statment from a file that returns a <a href="../../quill/database/Database.single.html"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.single.html"><span class="pln">single</span></a></span></code></a> row
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.single.html" class="public">
+								<code>single</code>
+							</a>
+						</td>
+						<td>Execute a SQL statement that returns a <a href="../../quill/database/Database.single.html"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.single.html"><span class="pln">single</span></a></span></code></a> row
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.single.html" class="public">
+								<code>single</code>
+							</a>
+						</td>
+						<td>Execute a SQL statement that takes a <a href="../../quill/database/Database.single.html#model"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.single.html#model"><span class="pln">model</span></a></span></code></a> parameter and returns a <a href="../../quill/database/Database.single.html"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.single.html"><span class="pln">single</span></a></span></code></a> row
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.single.html" class="public">
+								<code>single</code>
+							</a>
+						</td>
+						<td>Execute a SQL statement from a file that takes a <a href="../../quill/database/Database.single.html#model"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.single.html#model"><span class="pln">model</span></a></span></code></a> parameter and returns a <a href="../../quill/database/Database.single.html"><code class="lang-d"><span class="pln"><a href="../../quill/database/Database.single.html"><span class="pln">single</span></a></span></code></a> row
+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="../../quill/database/Database.sql.html" class="public">
+								<code>sql</code>
+							</a>
+						</td>
+						<td>Import a SQL string from a file
+</td>
+					</tr>
+				</table>
+			</section>
+
+	</section>
+	<section>
+		<h2>Authors</h2>
+<p>Chris Barnes
+</p>
+
+	</section>
+	<section>
+		<h2>Copyright</h2>
+<p>© 2015 Chris Barnes
+</p>
+
+	</section>
+	<section>
+		<h2>License</h2>
+<p>The MIT License, see license file
+</p>
+
+	</section>
+</div>

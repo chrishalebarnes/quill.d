@@ -11,3 +11,5 @@ Thumbs.db
 dub.selections.json
 .sass-cache
 _site
+libquill-d.a
+

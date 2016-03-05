@@ -1,0 +1,72 @@
+---
+  layout: subdox
+---
+<nav id="main-nav">
+	<h2>Modules</h2>
+				<ul>
+				<li>
+					<a href="../../quill/attributes.html">quill.attributes</a>
+				</li>
+				<li>
+					<a href="../../quill/database.html">quill.database</a>
+				</li>
+				<li>
+					<a href="../../quill/mapper.html">quill.mapper</a>
+				</li>
+				<li>
+					<a href="../../quill/mapper_base.html">quill.mapper_base</a>
+				</li>
+				<li>
+					<a href="../../quill/variant_mapper.html">quill.variant_mapper</a>
+				</li>
+				</ul>
+		<noscript>
+			<p style="color: red">The search functionality needs JavaScript enabled</p>
+		</noscript>
+		<div id="symbolSearchPane" style="display: none">
+			<p>
+				<input id="symbolSearch" type="text" placeholder="Search for symbols" onchange="performSymbolSearch(24);" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();"/>
+			</p>
+	<ul id="symbolSearchResults" style="display: none"></ul>
+	<script type="application/javascript" src="../../symbols.js"></script>
+	<script type="application/javascript">
+var symbolSearchRootDir = "../../";
+$('#symbolSearchPane').show();
+	</script>
+		</div>
+</nav>
+<div id="main-contents">
+	<h1>Function Mapper.mapArray</h1>
+	<section>
+		<p>Maps an array of models where the ResultSet is expected to have multiple rows
+</p>
+
+			<section>
+				<h3>Prototype</h3>
+				<div class="prototype">
+					<code class="lang-d">
+<span class="pln">T</span><span class="pun">[]</span> <span class="pln">mapArray<span class="pun">()</span><span class="pun">;</span>
+					</code>
+				</div>
+			</section>
+
+	</section>
+	<section>
+		<h2>Authors</h2>
+<p>Chris Barnes
+</p>
+
+	</section>
+	<section>
+		<h2>Copyright</h2>
+<p>© 2015 Chris Barnes
+</p>
+
+	</section>
+	<section>
+		<h2>License</h2>
+<p>The MIT License, see license file
+</p>
+
+	</section>
+</div>
