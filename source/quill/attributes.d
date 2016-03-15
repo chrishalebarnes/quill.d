@@ -16,7 +16,7 @@
         class Model
         {
             int id;
-            @ignore string name;
+            @omit string name;
         }
         ---
 
